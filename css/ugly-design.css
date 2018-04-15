@@ -1,0 +1,114 @@
+html, body {
+  width: 100%;
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: #c8dfd8;
+  font-family: sans-serif;
+}
+#container {
+  white-space: nowrap;
+  font-size: 0;
+  height: 100%;
+  overflow: auto;
+}
+.column {
+  display: inline-block;
+  width: 200px;
+  border-right: 1px solid rgba(0,0,0,0.1);
+  min-height: 100%;
+  font-size: 16px;
+  vertical-align: top;
+}
+.column > div {
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding: 5px;
+}
+.column > .date {
+  height: 1em;
+}
+.column > .orig-title {
+  height: 1em;
+  white-space: pre;
+  font-family: monospace;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.column > .orig-string {
+  height: 200px;
+  white-space: pre-wrap;
+  font-family: monospace;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.column > .parsed {
+  border-bottom: none;
+  padding: 0;
+  text-align: center;
+}
+.column > .parsed.no-school {
+  background-color: rgba(0,0,0,0.2);
+  padding: 10px;
+}
+.column > .parsed.debug {
+  background-color: rgba(0,0,0,0.2);
+  font-family: monospace;
+  white-space: pre-wrap;
+  padding: 5px;
+  text-align: left;
+}
+.column > .parsed.error {
+  background-color: #fd6c58;
+  color: white;
+}
+.header.column > .parsed {
+  padding: 5px;
+  text-align: left;
+}
+.header.column > div {
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.floating {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+}
+.floating button {
+  background: #3074b6;
+  border-radius: 2px;
+  color: white;
+  cursor: pointer;
+  font: inherit;
+  border-color: rgba(255,255,255,0.3);
+  margin: 5px;
+  margin-left: 0;
+}
+
+.period {
+  border-radius: 2px;
+  text-shadow: 0 0 3px black, 0 0 5px black;
+  color: white;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  display: table;
+  margin: 10px auto;
+  padding: 10px;
+  overflow-x: auto;
+}
+.period.a {background-color: #f44336;}
+.period.b {background-color: #3F51B5;}
+.period.c {background-color: #FFEB3B;}
+.period.d {background-color: #795548;}
+.period.e {background-color: #FF9800;}
+.period.f {background-color: #9C27B0;}
+.period.g {background-color: #4CAF50;}
+.period.flex {background-color: #009688;}
+.period.brunch {background-color: #9E9E9E;}
+.period.lunch {background-color: #607D8B;}
+.period.collaboration {background-color: #8BC34A;}
+.period.meetings {background-color: #E91E63;}
