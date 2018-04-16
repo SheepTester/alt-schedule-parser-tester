@@ -45,7 +45,7 @@ Can just add an exception...
 <p>Period F (1:35-2:55)</p>
 <p>Staff Meeting (3:05-3:45)</p>
 ```
-Where did those HTML tags come from? Just replace them with newlines...
+Where did those HTML tags come from? Oh well, could just replace `<p>` with newlines...
 
 ```html
 <div style="color: rgb(0, 0, 0); font-family: 'Courier New', monospace, 'Courier New', EmojiFont, 'Apple Color Emoji', 'Segoe UI Emoji', NotoColorEmoji, 'Segoe UI Symbol', 'Android Emoji', EmojiSymbols; font-size: 16px; margin-top: 0px; margin-bottom: 0px;">Period E (8:25-9:50)
@@ -55,6 +55,22 @@ Where did those HTML tags come from? Just replace them with newlines...
 <div style="color: rgb(0, 0, 0); font-family: 'Courier New', monospace, 'Courier New', EmojiFont, 'Apple Color Emoji', 'Segoe UI Emoji', NotoColorEmoji, 'Segoe UI Symbol', 'Android Emoji', EmojiSymbols; font-size: 16px; margin-top: 0px; margin-bottom: 0px;">EXTENDED LUNCH for Int'l. Potluck (11:55-12:55)
 <div style="color: rgb(0, 0, 0); font-family: 'Courier New', monospace, 'Courier New', EmojiFont, 'Apple Color Emoji', 'Segoe UI Emoji', NotoColorEmoji, 'Segoe UI Symbol', 'Android Emoji', EmojiSymbols; font-size: 16px; margin-top: 0px; margin-bottom: 0px;">Period A (12:55-2:05)
 <div style="color: rgb(0, 0, 0); font-family: 'Courier New', monospace, 'Courier New', EmojiFont, 'Apple Color Emoji', 'Segoe UI Emoji', NotoColorEmoji, 'Segoe UI Symbol', 'Android Emoji', EmojiSymbols; font-size: 16px; margin-top: 0px; margin-bottom: 0px;">Period G (2:15-3:35)
+```
+Just make all the elements newlines.
+
+```html
+<p><i>&nbsp; &nbsp;Wednesday,April 11</i><br></p>
+<p><span>Period C (8:25-9:30)</span></p>
+<p><span>Brunch (9:30-9:45)</span></p>
+<p><span>·<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><i><u><span>FRESHMEN</span></u></i><i><span>: to Assembly(9:45-10:45), to SELF (10:55-11:55), to FlexTime (12:05-1:05)<u></u></span></i></p>
+<p><span>·<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><i><u><span>SOPHOMORES</span></u></i><i>: to FlexTime(9:45-10:45), to Assembly (10:55-11:55), to FlexTime (12:05-1:05)</i></p>
+<p><span>·<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><i><u><span>JUNIORS: </span></u></i><i><span>to FlexTime(9:45-10:45), to FlexTime (10:55-11:55), to Assembly (12:05-1:05)<u></u></span></i></p>
+<p><span>·<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><i><u><span>SENIORS</span></u></i><i>: to CASTstate test (9:45-11:55), to Assembly (12:05-1:05)</i></p>
+<p><span>Lunch (1:05-1:45)<i><u></u></i></span></p>
+<p><span>Period F (1:45-2:45)</span></p>
+<p><span>Staff Meeting (3:00-3:45)</span></p>
+<p><span>&nbsp;</span></p>
+<p><i>&nbsp; &nbsp;</i></p>
 ```
 ?!?!
 
