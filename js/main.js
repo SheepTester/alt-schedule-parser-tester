@@ -74,7 +74,7 @@ function main() {
   }).then(regenColumns);
 
   document.getElementById("fetch").addEventListener("click", e => {
-    Promise.all(times.slice(0, -1).map((timeMin, i) => get(CalendarURL + `&timeMin=${timeMin}&timeMax=${times[i + 1]}`).then(JSON.parse).catch(err => console.log("problem parsing JSON")))).then(function(events) {
+    Promise.all(times.slice(0, -1).map((timeMin, i) => get(CalendarURL + `&timeMin=${encodeURIComponent(timeMin)}&timeMax=${encodeURIComponent(times[i + 1])}`).then(JSON.parse).catch(err => console.log("problem parsing JSON")))).then(function(events) {
       alternates = [].concat(...events.map(ev => ev.items)).filter(ev => /(schedule|extended|holiday|no\s*students|break)/i.test(ev.summary));
       localStorage.setItem("[gunn-web-app] test.rawAlts", JSON.stringify(alternates));
       regenColumns();
