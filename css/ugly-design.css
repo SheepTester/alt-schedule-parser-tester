@@ -88,7 +88,7 @@ body {
   margin-left: 0;
 }
 
-.period {
+/* .period {
   border-radius: 2px;
   text-shadow: 0 0 3px black, 0 0 5px black;
   color: white;
@@ -99,6 +99,12 @@ body {
   margin: 10px auto;
   padding: 10px;
   overflow-x: auto;
+} */
+.period {
+  text-shadow: 0 0 3px black, 0 0 5px black;
+  color: white;
+  padding: 10px;
+  white-space: normal;
 }
 .period.a {background-color: #f44336;}
 .period.b {background-color: #3F51B5;}

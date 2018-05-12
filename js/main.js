@@ -6,7 +6,12 @@ const CalendarURL = "https://www.googleapis.com/calendar/v3/calendars/"
 
 let colContainer;
 
-let alternates;
+let alternates,
+periodNames = {};
+
+function formatTime(minutes) {
+  return `${Math.floor(minutes / 60)}:${("0" + minutes % 60).slice(-2)}`;
+}
 
 function regenColumns() {
   let columns = document.createDocumentFragment();
@@ -40,8 +45,10 @@ function regenColumns() {
               schedule.forEach(p => {
                 let period = document.createElement("div");
                 period.classList.add("period");
-                period.classList.add(p.period.replace(/[^a-z-]/gi, "") || "idk");
-                period.textContent = p.period;
+                period.classList.add(p.period || "idk");
+                period.textContent = p.original;
+                period.title = `${formatTime(p.start)} – ${formatTime(p.end)}`;
+                periodNames[p.original] = (periodNames[p.original] || 0) + 1;
                 entry.appendChild(period);
               });
             } else {
@@ -75,7 +82,7 @@ function main() {
 
   document.getElementById("fetch").addEventListener("click", e => {
     Promise.all(times.slice(0, -1).map((timeMin, i) => get(CalendarURL + `&timeMin=${encodeURIComponent(timeMin)}&timeMax=${encodeURIComponent(times[i + 1])}`).then(JSON.parse).catch(err => console.log("problem parsing JSON")))).then(function(events) {
-      alternates = [].concat(...events.map(ev => ev.items)).filter(ev => /(schedule|extended|holiday|no\s*students|break)/i.test(ev.summary));
+      alternates = [].concat(...events.map(ev => ev.items)).filter(ev => /(holiday|no\s*students|break)/i.test(ev.summary) || /(schedule|extended)/i.test(ev.summary) && ev.description);
       localStorage.setItem("[gunn-web-app] test.rawAlts", JSON.stringify(alternates));
       regenColumns();
     }).catch(err => console.log(err));
