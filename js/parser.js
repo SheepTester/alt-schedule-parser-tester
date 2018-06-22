@@ -1,11 +1,9 @@
-// .replace(/<(p|div).*?>/g, "\n").replace(/<.*?>/g, "").replace(/&nbsp;/g, " ")
-// /(?:\n|,)(.*?)\(?(1?[0-9]):([0-9]{2})-(1?[0-9]):([0-9]{2})\)?/g
 const EARLIEST_AM_HOUR = 6;
 
 const HTMLnewlineRegex = /<(p|div).*?>/g;
 const noHTMLRegex = /<.*?>/g;
 const noNbspRegex = /&nbsp;/g;
-const parserRegex = /(?:\n|,)(.*?)\(?(1?[0-9]):([0-9]{2})-(1?[0-9]):([0-9]{2})\)?/g;
+const parserRegex = /(?:\n|,|\))(.*?)\(?(1?[0-9]):([0-9]{2})-(1?[0-9]):([0-9]{2})(?=\))?/g;
 const getPeriodLetterRegex = /\b[a-g]\b/;
 
 function parseAlternate(summary, description) {

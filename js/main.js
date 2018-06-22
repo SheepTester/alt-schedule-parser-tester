@@ -1,4 +1,4 @@
-const CalendarURL = "https://www.googleapis.com/calendar/v3/calendars/"
+const calendarURL = "https://www.googleapis.com/calendar/v3/calendars/"
   + encodeURIComponent("u5mgb2vlddfj70d7frf3r015h0@group.calendar.google.com")
   + "/events?singleEvents=true&fields="
   + encodeURIComponent("items(description,end(date,dateTime),start(date,dateTime),summary)")
@@ -14,6 +14,9 @@ function formatTime(minutes) {
 }
 
 function regenColumns() {
+  Array.from(colContainer.children).slice(1).forEach(col => {
+    col.remove();
+  });
   let columns = document.createDocumentFragment();
   alternates.forEach(alt => {
     let col = document.createElement("div");
@@ -81,11 +84,24 @@ function main() {
   }).then(regenColumns);
 
   document.getElementById("fetch").addEventListener("click", e => {
-    Promise.all(times.slice(0, -1).map((timeMin, i) => get(CalendarURL + `&timeMin=${encodeURIComponent(timeMin)}&timeMax=${encodeURIComponent(times[i + 1])}`).then(JSON.parse).catch(err => console.log("problem parsing JSON")))).then(function(events) {
-      alternates = [].concat(...events.map(ev => ev.items)).filter(ev => /(holiday|no\s*students|break)/i.test(ev.summary) || /(schedule|extended)/i.test(ev.summary) && ev.description);
-      localStorage.setItem("[gunn-web-app] test.rawAlts", JSON.stringify(alternates));
-      regenColumns();
-    }).catch(err => console.log(err));
+    Promise.all(keywords.map(keyword =>
+      get(calendarURL + `&timeMin=${encodeURIComponent(firstDay)}&timeMax=${encodeURIComponent(lastDay)}&q=${keyword}`)
+        .then(JSON.parse)
+        .catch(err => console.log("problem parsing JSON"))))
+      .then(events => {
+        let dates = {};
+        [].concat(...events.map(ev => ev.items))
+          .filter(ev =>
+            /(holiday|no\s*students|break)/i.test(ev.summary) || /(schedule|extended)/i.test(ev.summary) && ev.description)
+          .forEach(ev => {
+            dates[ev.start.date || ev.start.dateTime] = ev;
+          });
+        console.log(dates);
+        alternates = Object.values(dates);
+        localStorage.setItem("[gunn-web-app] test.rawAlts", JSON.stringify(alternates));
+        regenColumns();
+      })
+      .catch(err => console.log(err));
   }, false);
 }
 
