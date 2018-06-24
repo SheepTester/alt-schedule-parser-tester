@@ -46,7 +46,7 @@ function identifyPeriod(name) {
     let letter = getPeriodLetterRegex.exec(name);
     if (letter) return letter[0];
   }
-  if (~name.indexOf("flextime")
+  if (~name.indexOf("flex")
       || ~name.indexOf("self")
       || ~name.indexOf("assembly")
       || ~name.indexOf("tutorial"))
