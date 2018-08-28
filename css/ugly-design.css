@@ -27,6 +27,8 @@ body {
 }
 .column > .date {
   height: 1em;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .column > .orig-title {
   height: 1em;

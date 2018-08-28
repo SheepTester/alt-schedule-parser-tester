@@ -13,12 +13,22 @@ function formatTime(minutes) {
   return `${Math.floor(minutes / 60)}:${("0" + minutes % 60).slice(-2)}`;
 }
 
+function formatDate(date) {
+  return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
+}
+
+function dateify(calendarDate) {
+  const date = new Date(calendarDate.dateTime || calendarDate.date);
+  if (!calendarDate.dateTime) date.setTime(date.getTime() + date.getTimezoneOffset() * 60000);
+  return date;
+}
+
 function regenColumns() {
   Array.from(colContainer.children).slice(1).forEach(col => {
     col.remove();
   });
   let columns = document.createDocumentFragment();
-  alternates.forEach(alt => {
+  alternates.sort((a, b) => dateify(a.start).getTime() - dateify(b.start).getTime()).forEach(alt => {
     let col = document.createElement("div");
     col.classList.add("column");
     ["date", "orig-title", "orig-string", "parsed"].forEach(cl => {
@@ -27,9 +37,12 @@ function regenColumns() {
       switch (cl) {
         case "date":
           // https://stackoverflow.com/questions/439630/how-do-you-create-a-javascript-date-object-with-a-set-timezone-without-using-a-s
-          let date = new Date(alt.start.dateTime || alt.start.date);
-          date.setTime(date.getTime() + date.getTimezoneOffset() * 60000);
-          entry.textContent = `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`
+          const date = dateify(alt.start);
+          const end = dateify(alt.end);
+          const difference = end.getDate() - date.getDate();
+          entry.innerHTML = formatDate(date)
+            + (difference <= 1 ? '' : ' &ndash; ' + formatDate(end));
+          entry.title = entry.textContent;
           break;
         case "orig-title":
           entry.textContent = alt.summary;
