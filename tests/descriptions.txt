@@ -53,4 +53,8 @@ Period G (1:35-2:55)
 7:40-7:50 pm Period D
 8:00-8:10 pm Period E
 8:20-8:30 pm Period F
-8:40-8:50 pm Period G 
+8:40-8:50 pm Period G
+
+<span style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 12px; white-space: pre-wrap; background-color: rgb(255, 255, 255);">Period D (8:25-9:50)Brunch (9:50-10:05)Assembly for 9th/10th graders in Titan Gym (10:05-10:40)11th/12th graders to FlexTimeAssembly for 11th/12th graders in Titan Gym (10:50-11:25)9th/10th graders to FlexTimePeriod E (11:35-12:55)Lunch (12:55-1:35)Period G (1:35-2:55)</span>
+
+<br><br><span>Period A (8:25-9:50)Brunch (9:50-10:05)Period B (10:05-11:25)Period C (11:35-12:55)Lunch (12:55-1:35)Period F (1:35-2:55) Staff/Dept. Meeting (3:05-3:45)</span>

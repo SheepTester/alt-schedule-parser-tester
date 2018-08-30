@@ -1,10 +1,11 @@
 const EARLIEST_AM_HOUR = 6;
 
-const HTMLnewlineRegex = /<(p|div|br).*?>|\)(?=[A-Z])/g;
+const HTMLnewlineRegex = /<(p|div|br).*?>|\) *(?=[A-Z0-9])/g;
 const noHTMLRegex = /<.*?>/g;
 const noNbspRegex = /&nbsp;/g;
-const parserRegex = /(?:\n|,|\))(.*?)\(?(1?[0-9]):([0-9]{2}) *(?:-|–) *(1?[0-9]):([0-9]{2}) *(pm)?(?=\))?/g;
-// const timeGetterRegex = /\(?(1?[0-9]):([0-9]{2}) *(?:-|–) *(1?[0-9]):([0-9]{2}) *(pm)?\)?/;
+// const parserRegex = /(?:\n|,|\))(.*?)\(?(1?[0-9]):([0-9]{2}) *(?:-|–) *(1?[0-9]):([0-9]{2}) *(pm)?(?=\))?/g;
+const timeGetterRegex = /\(?(1?[0-9]):([0-9]{2}) *(?:-|–) *(1?[0-9]):([0-9]{2}) *(pm)?\)?/;
+const newLineRegex = /\r?\n/g;
 const getPeriodLetterRegex = /\b[a-g]\b/;
 
 function parseAlternate(summary, description) {
@@ -12,17 +13,29 @@ function parseAlternate(summary, description) {
     if (!description) return "/srig";
     description = "\n" + description.replace(HTMLnewlineRegex, "\n").replace(noHTMLRegex, "").replace(noNbspRegex, " ");
     let periods = [];
-    description.replace(parserRegex, (m, name, sH, sM, eH, eM, pm) => {
-      name = name.trim();
-      if (!name) return;
+    description.split(newLineRegex).map(str => {
+      let times;
+      const name = str.replace(timeGetterRegex, (...matches) => {
+        times = matches;
+        return '';
+      }).trim();
+
+      if (!times) {
+        if (periods.length > 0) {
+          periods[periods.length - 1].original += "\n" + name;
+        }
+        return;
+      }
+
+      let [, sH, sM, eH, eM, pm] = times;
 
       sH = +sH; sM = +sM; eH = +eH; eM = +eM;
       if (sH < EARLIEST_AM_HOUR || pm) sH += 12;
       if (eH < EARLIEST_AM_HOUR || pm) eH += 12;
-      let startTime = sH * 60 + sM,
+      const startTime = sH * 60 + sM,
       endTime = eH * 60 + eM;
 
-      let duplicatePeriod = periods.findIndex(p => p.start === startTime);
+      const duplicatePeriod = periods.findIndex(p => p.start === startTime);
       if (~duplicatePeriod) {
         periods[duplicatePeriod].original += "\n" + name;
       } else {
@@ -55,6 +68,6 @@ function identifyPeriod(name) {
   else if (~name.indexOf("collaboration")) return "collaboration";
   else if (~name.indexOf("meeting")) return "meetings";
   else if (~name.indexOf("brunch") || ~name.indexOf("break")) return "brunch";
-  else if (~name.indexOf("lunch")) return "lunch";
+  else if (~name.indexOf("lunch") || ~name.indexOf("turkey")) return "lunch";
   else return;
 }
