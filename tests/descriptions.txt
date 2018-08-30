@@ -40,3 +40,17 @@ Period G (1:35-2:55)
 <p><i>&nbsp; &nbsp;Wednesday,April 11</i><br></p><p><span>Period C (8:25-9:30)</span></p><p><span>Brunch (9:30-9:45)</span></p><p><span>·<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><i><u><span>FRESHMEN</span></u></i><i><span>: to Assembly(9:45-10:45), to SELF (10:55-11:55), to FlexTime (12:05-1:05)<u></u></span></i></p><p><span>·<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><i><u><span>SOPHOMORES</span></u></i><i>: to FlexTime(9:45-10:45), to Assembly (10:55-11:55), to FlexTime (12:05-1:05)</i></p><p><span>·<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><i><u><span>JUNIORS: </span></u></i><i><span>to FlexTime(9:45-10:45), to FlexTime (10:55-11:55), to Assembly (12:05-1:05)<u></u></span></i></p><p><span>·<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span><i><u><span>SENIORS</span></u></i><i>: to CASTstate test (9:45-11:55), to Assembly (12:05-1:05)</i></p><p><span>Lunch (1:05-1:45)<i><u></u></i></span></p><p><span>Period F (1:45-2:45)</span></p><p><span>Staff Meeting (3:00-3:45)</span></p><p><span>&nbsp;</span></p><p><i>&nbsp; &nbsp;</i></p>
 
 <span style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 12px; white-space: pre-wrap; background-color: rgb(255, 255, 255);">Period A (8:25-9:50)Brunch (9:50-10:05)Period B (10:05-11:25)Period C (11:35-12:55)Lunch (12:55-1:35)Period F (1:35-2:55)</span>
+
+<span style="color: rgb(0, 0, 0); font-family: Arial, sans-serif; font-size: 12px; white-space: pre-wrap; background-color: rgb(255, 255, 255);">Period D (8:25-9:50)Brunch (9:50-10:05)FlexTime (10:05-11:25)Period E (11:35-12:55)Lunch (12:55-1:35)Period G (1:35-2:55)BACK TO SCHOOL NIGHT (6:00-9:00pm)</span>
+
+<span>Period C 8:25 – 9:25 (60 min) (Run, Hide, Fight)</span><br><span>Period D 9:35 – 10:25 (50 min) (Evacuation Drill)</span><br><span>Brunch 10:25 – 10:40</span><br><span>Period E 10:40 – 11:25 (45 min) (Harassment/ Bullying)</span><br><span>Period F 11:35 – 12:20 (45 min) (Digital Citizenship Lesson)</span><br><span>Period G 12:30 - 1:00 (30 min) (Data collection)</span>
+
+6:00-6:10 pm Principal's Welcome on Freshman Quad (north side of Spangenberg Theatre)
+6:15-6:30 pm Zero, H Period or SELF
+6:40-6:50 pm Period A
+7:00-7:10 pm Period B
+7:20-7:30 pm Period C
+7:40-7:50 pm Period D
+8:00-8:10 pm Period E
+8:20-8:30 pm Period F
+8:40-8:50 pm Period G 

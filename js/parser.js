@@ -1,9 +1,10 @@
 const EARLIEST_AM_HOUR = 6;
 
-const HTMLnewlineRegex = /<(p|div).*?>/g;
+const HTMLnewlineRegex = /<(p|div|br).*?>|\)(?=[A-Z])/g;
 const noHTMLRegex = /<.*?>/g;
 const noNbspRegex = /&nbsp;/g;
-const parserRegex = /(?:\n|,|\))(.*?)\(?(1?[0-9]):([0-9]{2})-(1?[0-9]):([0-9]{2})(?=\))?/g;
+const parserRegex = /(?:\n|,|\))(.*?)\(?(1?[0-9]):([0-9]{2}) *(?:-|–) *(1?[0-9]):([0-9]{2}) *(pm)?(?=\))?/g;
+// const timeGetterRegex = /\(?(1?[0-9]):([0-9]{2}) *(?:-|–) *(1?[0-9]):([0-9]{2}) *(pm)?\)?/;
 const getPeriodLetterRegex = /\b[a-g]\b/;
 
 function parseAlternate(summary, description) {
@@ -11,13 +12,13 @@ function parseAlternate(summary, description) {
     if (!description) return "/srig";
     description = "\n" + description.replace(HTMLnewlineRegex, "\n").replace(noHTMLRegex, "").replace(noNbspRegex, " ");
     let periods = [];
-    description.replace(parserRegex, (m, name, sH, sM, eH, eM) => {
+    description.replace(parserRegex, (m, name, sH, sM, eH, eM, pm) => {
       name = name.trim();
       if (!name) return;
 
       sH = +sH; sM = +sM; eH = +eH; eM = +eM;
-      if (sH < EARLIEST_AM_HOUR) sH += 12;
-      if (eH < EARLIEST_AM_HOUR) eH += 12;
+      if (sH < EARLIEST_AM_HOUR || pm) sH += 12;
+      if (eH < EARLIEST_AM_HOUR || pm) eH += 12;
       let startTime = sH * 60 + sM,
       endTime = eH * 60 + eM;
 
