@@ -1,6 +1,6 @@
 const EARLIEST_AM_HOUR = 6;
 
-const HTMLnewlineRegex = /<(p|div|br).*?>|\) *(?=[A-Z0-9])/g;
+const HTMLnewlineRegex = /<(p|div|br).*?>|\),? *(?=[A-Z0-9])/g;
 const noHTMLRegex = /<.*?>/g;
 const noNbspRegex = /&nbsp;/g;
 // const parserRegex = /(?:\n|,|\))(.*?)\(?(1?[0-9]):([0-9]{2}) *(?:-|–) *(1?[0-9]):([0-9]{2}) *(pm)?(?=\))?/g;
@@ -9,7 +9,7 @@ const newLineRegex = /\r?\n/g;
 const getPeriodLetterRegex = /\b[a-g]\b/;
 
 function parseAlternate(summary, description) {
-  if (/(schedule|extended)/i.test(summary)) {
+  if (/schedule|extended/i.test(summary)) {
     if (!description) return "/srig";
     description = "\n" + description.replace(HTMLnewlineRegex, "\n").replace(noHTMLRegex, "").replace(noNbspRegex, " ");
     let periods = [];
@@ -49,7 +49,7 @@ function parseAlternate(summary, description) {
       }
     });
     return periods;
-  } else if (/(holiday|no\sstudents|break)/i.test(summary)) {
+  } else if (/holiday|no\sstudents|break|development/i.test(summary)) {
     return null;
   }
 }
@@ -62,7 +62,7 @@ function identifyPeriod(name) {
   }
   if (~name.indexOf("flex")
       || ~name.indexOf("self")
-      || ~name.indexOf("assembly")
+      || ~name.indexOf("assembl") // assembly, assemblies
       || ~name.indexOf("tutorial"))
     return "flex";
   else if (~name.indexOf("collaboration")) return "collaboration";
